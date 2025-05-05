@@ -1,1 +1,1 @@
-# automation-demoblaze-rofiq
+# automation-testing-demoblaze-cypress-rofiq
