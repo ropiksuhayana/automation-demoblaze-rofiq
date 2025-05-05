@@ -4,6 +4,7 @@ module.exports ={
     empty_data:'',
     invalid_username :'ropiksuhayana_invalid',
     invalid_password :'Demo123@',
+    product_name: 'Nokia lumia 1520',
 
     error_message: {
         empty_creds: 'Please fill out Username and Password.',

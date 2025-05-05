@@ -39,7 +39,7 @@ class homePageObjects{
 
     verifySuccessRedirectToLoginPage(username){
         // Verifikasi username tampil di navbar
-         cy.xpath('//*[@id="nameofuser"]') 
+         cy.xpath('//*[@id="navbarExample"]/ul/li[7]')
             .should('be.visible')
             .and('contain.text', `Welcome ${username}`);
 
@@ -53,6 +53,24 @@ class homePageObjects{
         this.verifyLogInMenuAppears();
         cy.xpath(locator.login_menu).click();
     }
+
+    selectProduct(productName) {
+        cy.wait(3000)
+        cy.xpath('//*[@id="tbodyid"]/div[2]/div/div/h4').contains(productName).click();
+      }
+
+    getSelectedProductDetails() {
+        return cy.xpath('//*[@id="tbodyid"]/h2').invoke('text').then(name => {
+          return cy.xpath('//*[@id="tbodyid"]/h3').invoke('text').then(priceText => {
+            const price = priceText.replace('Price: ', '').replace(' *includes tax', '').trim();
+            return { name: name.trim(), price };
+          });
+        });
+      }
+      clickLogoutMenu(){
+        cy.xpath('//*[@id="logout2"]').click();
+      }
+
 
 }
 

@@ -3,7 +3,7 @@
 class signInPageObjects{
 
     inputUsername(username) {
-        cy.wait(5000);
+        cy.wait(2000);
         const usernameField = cy.xpath('//*[@id="sign-username"]');
         if (username) {
             usernameField.type(username);
@@ -13,7 +13,7 @@ class signInPageObjects{
     }
     
     inputPassword(password) {
-        cy.wait(5000);
+        cy.wait(2000);
         const passwordField = cy.xpath('//*[@id="sign-password"]');
         if (password) {
             passwordField.type(password);

@@ -3,6 +3,7 @@ const loginPage = require ('../support/pageObjects/loginPage/loginPageObjects')
 const staticData = require ('../support/staticData/staticData')
 
 describe('Login features', () => {
+  
   it('Login with valid credentials', () => {
     homePage.goToHomePage();
     homePage.clickLogInMenu();

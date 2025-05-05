@@ -4,5 +4,6 @@ class productPageObjects {
     }
   }
   
-  exports.module = new productPageObjects();
+module.exports = new productPageObjects();
+  
   

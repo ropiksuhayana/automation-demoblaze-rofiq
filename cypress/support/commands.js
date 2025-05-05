@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+const homePage = require ('../support/pageObjects/homePage/homePageObjects')
+const loginPage = require ('../support/pageObjects/loginPage/loginPageObjects')
+const staticData = require ('../support/staticData/staticData')
+
+
+Cypress.Commands.add('loginWithValidCredentials', () => {
+        homePage.goToHomePage();
+        homePage.clickLogInMenu();
+        homePage.verifyLogInMenuAppears();
+        loginPage.inputUsername(staticData.valid_username);
+        loginPage.inputPassword(staticData.valid_password);
+        loginPage.clickLogInButton();
+        homePage.verifySuccessRedirectToLoginPage(staticData.valid_username);
+  });
+  

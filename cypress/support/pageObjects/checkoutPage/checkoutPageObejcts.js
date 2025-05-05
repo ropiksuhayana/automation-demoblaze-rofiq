@@ -1,11 +1,15 @@
 class checkoutPageObjects {
-    fillCheckoutForm(name, country, city, card, month, year, zip, phone) {
-      cy.xpath('#name').type(name);
-      cy.xpath('#country').type(country);
-      cy.xpath('#city').type(city);
-      cy.xpath('#card').type(card);
-      cy.xpath('#month').type(month);
-      cy.xpath('#year').type(year);
+
+  verifyCheckoutFormVisible() {
+    cy.xpath('//*[@id="orderModal"]/div/div').should('be.visible');
+  }
+    fillCheckoutForm(name, country, city, card, month, year) {
+      cy.xpath('//*[@id="name"]').type(name);
+      cy.xpath('//*[@id="country"]').type(country);
+      cy.xpath('//*[@id="city"]').type(city);
+      cy.xpath('//*[@id="card"]').type(card);
+      cy.xpath('//*[@id="month"]').type(month);
+      cy.xpath('//*[@id="year"]').type(year);
     }
   
     clickPurchaseButton() {
@@ -13,8 +17,12 @@ class checkoutPageObjects {
     }
   
     verifySuccessCheckout() {
-        cy.xpath('.sweet-alert').should('contain', 'Thank you for your purchase!');
-    }
+        cy.wait(2000)
+        cy.get('.sweet-alert').should('be.visible');
+        cy.get('.sweet-alert h2').should('contain.text', 'Thank you for your purchase!');
+        cy.get('.confirm').click();
+      }
+      
   }
   
-  exports.module = new checkoutPageObjects();
+  module.exports = new checkoutPageObjects();
